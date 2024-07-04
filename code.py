@@ -14,6 +14,16 @@ def encrypt(plain_text, shift_amount):
         cipher_text += new_letter # ad the new letter to the cipher text string 
         print(f"The encoded text is {cipher_text}") # print the encrypted text       
       
-encrypt(plain_text= text, shift_amount= shift) # call function encrypt with the user inputs 
-
 #DECODE
+def decrypt(cipher_text, shift_amount):
+  plain_text = "" # create a blank string to store the decoded text 
+  for letter in cipher_text: # create a loop to iterate through each letter in the cipher text
+    position = alphabet.index(letter) # find the position of the letter in the alphabet list and store it
+    new_position = position - shift_amount  # create the new position by subtracting the shift amount to the current position
+    plain_text += alphabet[new_position] # find the new letter by indexing the alphabet list with the new position 
+  print(f"The decoded text is {plain_text}") # print the decoded text
+
+if direction == "encode":  # create a variable direction and check it for True or False
+  encrypt(plain_text=text, shift_amount=shift) # call the correct function based on the direction
+elif direction == "decode":
+  decrypt(cipher_text=text, shift_amount=shift)
